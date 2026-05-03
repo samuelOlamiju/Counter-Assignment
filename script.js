@@ -1,29 +1,34 @@
-'use strict'
+'use strict';
 
-let valueE1 = 0;
-let value = document.querySelector('#value');
+let count = 0;
 
+const valueEl = document.querySelector('#value');
+const increaseBtn = document.querySelector('.increase');
+const decreaseBtn = document.querySelector('.decrease');
+const resetBtn = document.querySelector('.reset');
 
+const updateUI = function () {
+  valueEl.textContent = count;
 
-document.querySelector(".increase").addEventListener('click', function(){
-    valueE1++;
-    value.textContent = valueE1;
-    if (valueE1 === 0){
-    value.style.color = "black";
-}
-    valueE1 > 0 ? value.style.color = "green" : value.style.color = "red";
-    
-})
+  if (count > 0) valueEl.style.color = 'green';
+  else if (count < 0) valueEl.style.color = 'red';
+  else valueEl.style.color = 'black';
+};
 
-document.querySelector(".decrease").addEventListener('click', function(){
-    valueE1--;
-    value.textContent = valueE1;
-    if (valueE1 === 0){
-    value.style.color = "black";
-}
-    valueE1 < 0 ? value.style.color = "red" : value.style.color = "green";
-})
+increaseBtn.addEventListener('click', function () {
+  count++;
+  updateUI();
+});
 
-document.querySelector(".reset").addEventListener('click', function(){
-    location.reload();
-})
+decreaseBtn.addEventListener('click', function () {
+  count--;
+  updateUI();
+});
+
+resetBtn.addEventListener('click', function () {
+  count = 0;
+  updateUI();
+});
+
+// Initialize display
+updateUI();
