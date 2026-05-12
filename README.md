@@ -1,2 +1,3 @@
 # Counter Assignment
-Solution to my coach's assignment
+
+Nothing much here. Just the solution to my coach's assignment.
